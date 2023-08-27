@@ -5,10 +5,10 @@ const Navbar = () => {
   return (
     <>
     <nav>
-    <div id="nav-1" className="flex bg-[#131921] justify-between text-white p-1">
+    <div id="nav-1" className="flex bg-[#131921] justify-between text-white">
       <div id="nav1-Left" className="flex justify-center items-center">
-        <div className=" hover:cursor-pointer text-xl m-2">AmZone</div>
-        <div className="flex items-center m-2 hover:cursor-pointer">
+        <div className=" hover:cursor-pointer hover:outline outline-2 outline-white text-xl p-2">AmZone</div>
+        <div className="flex items-center p-2 hover:cursor-pointer hover:outline outline-2 outline-white">
           <MdLocationOn className="text-3xl" />
           <div>
             <div className="text-xs">Hello</div>
@@ -22,10 +22,10 @@ const Navbar = () => {
         <button className="bg-orange-400 rounded-r text-2xl w-8 h-8 p-1"><MdSearch/></button>
       </div>
       <div id="nav1-right" className="flex justify-center items-center">
-        <div className="m-2 hover:cursor-pointer flex justify-center items-center"><div className="text-2xl"><MdOutlineEmojiFlags/></div><div>En</div></div>
-        <div className="m-2 hover:cursor-pointer"><div className="text-xs">Hello Singin</div><div className="font-semibold">Account & List </div></div>
-        <div className="m-2 hover:cursor-pointer"><div className="text-xs">Returns</div><div className="font-semibold">& Orders</div></div>
-        <div className="flex justify-center items-center m-2 hover:cursor-pointer">
+        <div className="p-2 hover:outline outline-2 outline-white hover:cursor-pointer flex justify-center items-center"><div className="text-2xl"><MdOutlineEmojiFlags/></div><div>En</div></div>
+        <div className="p-2 hover:outline outline-2 outline-white hover:cursor-pointer"><div className="text-xs">Hello Singin</div><div className="font-semibold">Account & List </div></div>
+        <div className="p-2 hover:outline outline-2 outline-white hover:cursor-pointer"><div className="text-xs">Returns</div><div className="font-semibold">& Orders</div></div>
+        <div className="flex justify-center items-center hover:outline outline-2 outline-white p-2 hover:cursor-pointer">
           <span>
             <MdShoppingCart className="text-4xl" />
           </span>
