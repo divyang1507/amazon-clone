@@ -4,6 +4,8 @@ const express = require("express");
 const app = express();
 const connectDB = require("./db/db");
 const userRoutes = require("./routes/user.routes");
+const categoryRoutes = require("./routes/category.routes");
+const productRoutes = require("./routes/product.routes");
 const cors = require("cors");
 
 // Connect to MongoDB
@@ -21,5 +23,6 @@ app.get("/", (req, res) => {
 
 // Use routes
 app.use("/api/user", userRoutes);
-
+app.use("/api", categoryRoutes);
+app.use("/api", productRoutes);
 module.exports = app;

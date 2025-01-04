@@ -35,6 +35,7 @@ const Page = () => {
 
     if (response.ok) {
       setSuccess(data.message); // Success message on successful registration
+      router.push("/login"); // Redirect to the login page
     } else {
       setError(data.message); // Error message if the registration failed
     }
@@ -107,3 +108,12 @@ const Page = () => {
 };
 
 export default Page; // Export Register component
+
+
+
+
+
+
+
+
+

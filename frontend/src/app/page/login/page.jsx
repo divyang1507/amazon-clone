@@ -12,7 +12,7 @@ const page = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      router.push("/profile"); // Redirect to login if no token is found
+      router.push("/page/profile"); // Redirect to login if no token is found
     }
   });
 
@@ -35,7 +35,7 @@ const page = () => {
     if (response.ok) {
       console.log("yes");
       localStorage.setItem("token", data.token); // Store token in localStorage
-      router.push("/profile"); // Redirect to the profile page
+      router.push("/page/profile"); // Redirect to the profile page
     } else {
       setError(data.message); // Error message if the registration failed
     }

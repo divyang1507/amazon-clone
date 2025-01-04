@@ -1,7 +1,7 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { UserContext } from "../Context/UserContext";
+import { UserContext } from "../../Context/UserContext";
 
 const page = () => {
   const [error, setError] = useState(null);
@@ -21,8 +21,8 @@ const page = () => {
       {error && <p className="text-red-600 mb-4">{error}</p>}
       {user ? (
         <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-          <h2 className="text-2xl font-bold mb-4">Welcome, {user.username}</h2>
-          <p>Email: {user.email}</p>
+          <h2 className="text-2xl font-bold mb-4">Welcome, {user?.username}</h2>
+          <p>Email: {user?.email}</p>
           {/* Display other user details */}
         </div>
       ) : (

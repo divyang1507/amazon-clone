@@ -8,8 +8,8 @@ const Navbar = () => {
   const { user } = useContext(UserContext);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
   return (
-    <nav className="flex justify-between items-center mx-auto py-4 px-8 text-darkest">
-      <div className="flex items-center gap-8 z-50">
+    <nav className="flex justify-between items-center mx-auto py-4 px-8 text-darkest z-50 relative">
+      <div className="flex items-center gap-8 z-50 relative">
         <Link href={"/"}>
           <div className="text-3xl">Amazon-clone</div>
         </Link>
@@ -40,13 +40,12 @@ const Navbar = () => {
       </div>
       <div className="flex items-center w-[40%]  h-full rounded-lg  z-50 gap-4 ">
         <button
-          className="text-primary hover:bg-primary-2 hover:border-primary-2 hover:text-lightest text-nowrap border-primary border rounded-lg h-full px-4 py-4 group "
+          className="text-primary hover:bg-primary-2 hover:border-primary-2 hover:text-lightest text-nowrap border-primary border rounded-lg h-full px-4 py-4 group z-50"
           onMouseEnter={() => setIsMenuVisible(true)}
-          onMouseLeave={() => setIsMenuVisible(false)}>
+          onClick={() => setIsMenuVisible(!isMenuVisible)}
+          onMouseLeave={() => setIsMenuVisible(false)}
+        >
           All Category
-          {isMenuVisible && (
-            <div className="w-screen absolute h-1/2 bg-mid left-0 top-0">hello menu</div>
-          )}
         </button>
 
         <div className="flex items-center w-full   relative h-full overflow-hidden border rounded-lg  border-dark">
@@ -78,7 +77,7 @@ const Navbar = () => {
           ) : (
             <Link
               className="text-base leading-none flex items-center gap-2"
-              href={"/signup"}>
+              href={"/page/signup"}>
               <div className="text-3xl">
                 <FaRegUserCircle />
               </div>
@@ -96,6 +95,12 @@ const Navbar = () => {
          p-1 h-full  rounded-sm">
           <MdOutlineShoppingCart />
         </div>
+      </div>
+      <div
+        className={`w-screen absolute h-screen bg-mid left-0 top-0 z-0 ${
+          isMenuVisible ? "static" : "hidden"
+        }`}>
+        hello menu
       </div>
     </nav>
   );
