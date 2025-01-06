@@ -1,9 +1,7 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
 import { ProductContext } from "./Context/ProductContext";
-import Image from "next/image";
 import Slider from "./components/Slider";
-import ProductCard from "./components/ProductCard";
 
 export default function Home() {
   const { fetchProducts, loading, error } = useContext(ProductContext);
