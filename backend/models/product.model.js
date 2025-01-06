@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+const slugify = require("slugify");
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -7,6 +8,11 @@ const productSchema = new mongoose.Schema({
   },
   price: {
     type: Number,
+    required: true,
+  },
+  slug: {
+    type: String,
+    unique: true,
     required: true,
   },
   imageUrl: {
@@ -28,4 +34,15 @@ const productSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('Product', productSchema);
+// Middleware to generate slug before saving
+productSchema.pre("save", function (next) {
+  if (this.isModified("name")) {
+    this.slug = slugify(this.name, {
+      lower: true, // Converts to lowercase
+      strict: true, // Removes special characters
+    });
+  }
+  next();
+});
+
+module.exports = mongoose.model("Product", productSchema);

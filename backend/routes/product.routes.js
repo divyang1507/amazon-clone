@@ -5,6 +5,7 @@ const {
   addProduct,
   editProduct,
   getSingelProduct,
+  getSingelProductslug
 } = require("../controller/product.controller");
 
 const router = express.Router();
@@ -12,6 +13,7 @@ const router = express.Router();
 router.post("/addproduct", addProduct);
 router.get("/getproducts", getProducts);
 router.get("/getproduct/:id", getSingelProduct);
+router.get("/singleproduct/:slug", getSingelProductslug);
 router.put(
   "/editproduct/:id",
   [

@@ -59,11 +59,11 @@ const Navbar = () => {
         </div>
       </div>
       <div className="flex items-center gap-8 z-50">
-        <div
+        <Link href={"/page/dashboard"}
           className="text-base leading-none font-medium 
          p-1 h-full  rounded-sm">
           EN
-        </div>
+        </Link>
         <div
           className="
          p-1 h-full  rounded-sm hover:text-primary">

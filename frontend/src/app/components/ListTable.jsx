@@ -1,49 +1,56 @@
 "use client";
-import { Table } from "flowbite-react";
 import { ProductContext } from "../Context/ProductContext";
-import { useContext } from "react";
-import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
+import { FaEdit } from "react-icons/fa";
 
-export function ListTable({handleEditClick}) {
-  const { products, loading, error } = useContext(ProductContext);
-  console.log(products);
+export function ListTable({ handleEditClick }) {
+  const { fetchProducts, loading, error } = useContext(ProductContext);
+
+  const [products, setProducts] = useState();
+
+  useEffect(() => {
+    const fetching = async () => {
+      const data = await fetchProducts();
+      setProducts(data);
+    };
+    fetching();
+  }, []);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="overflow-x-auto">
-      <Table>
-        <Table.Head>
-          <Table.HeadCell>Product name</Table.HeadCell>
-          <Table.HeadCell>Color</Table.HeadCell>
-          <Table.HeadCell>Category</Table.HeadCell>
-          <Table.HeadCell>Price</Table.HeadCell>
-          <Table.HeadCell>
-            <span className="sr-only">Edit</span>
-          </Table.HeadCell>
-        </Table.Head>
-        <Table.Body className="divide-y">
-          {products?.map((product) => {
-            return (
-              <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800" key={product?._id}>
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                  {product?.name}
-                </Table.Cell>
-                {/* <Table.Cell>Sliver</Table.Cell> */}
-                <Table.Cell>{product?.category}</Table.Cell>
-                <Table.Cell>${product?.price}</Table.Cell>
-                <Table.Cell>
-                  <div onClick={() => handleEditClick(product?._id)}
-                    // href={`/page/edit/${product?._id}`}
-                    className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-                    Edit
-                  </div>
-                </Table.Cell>
-              </Table.Row>
-            );
-          })}
-        </Table.Body>
-      </Table>
+    <div className="overflow-x-auto w-full bg-white shadow-md rounded-lg my-4 mx-12">
+      <table className="w-full table-auto text-sm text-left text-gray-500">
+        <thead className="bg-gray-100 text-gray-700">
+          <tr>
+            <th className="px-4 py-3 border-b">Name</th>
+            <th className="px-4 py-3 border-b text-center">Category</th>
+            <th className="px-4 py-3 border-b text-center">Price</th>
+            <th className="px-4 py-3 border-b text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products?.map((product) => (
+            <tr key={product?._id} className="hover:bg-gray-50">
+              <td className="px-4 py-3 border-b">{product?.name}</td>
+              <td className="px-4 py-3 border-b text-center">
+                {product?.category}
+              </td>
+              <td className="px-4 py-3 border-b text-center">
+                {product?.price}
+              </td>
+              <td className="px-4 py-3 border-b text-center">
+                <div
+                  onClick={() => handleEditClick(product?._id)}
+                  className="text-blue-500 flex items-center justify-center hover:text-blue-700 cursor-pointer">
+                  <FaEdit />
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
