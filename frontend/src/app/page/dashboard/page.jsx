@@ -8,8 +8,7 @@ import { useContext, useState } from "react";
 const page = () => {
   const { fetchProducts, editproduct } = useContext(ProductContext);
   const [currentView, setCurrentView] = useState("list"); // Toggles between 'list' and 'edit'
-  const [selectedProductId, setSelectedProductId] = useState(null); // Stores the ID of the product to be edited
-  // Function to handle edit button click
+  const [selectedProductId, setSelectedProductId] = useState(null);
   const handleEditClick = (productId) => {
     setSelectedProductId(productId);
     setCurrentView("edit");
@@ -24,7 +23,7 @@ const page = () => {
         <EditProduct
           productId={selectedProductId}
           onCancel={() => {
-            fetchProducts()
+            fetchProducts();
             setCurrentView("list");
           }}
         />

@@ -33,7 +33,6 @@ const ProductProvider = ({ children }) => {
       console.log("Full API Response:", data); // Debugging log
       if (response.ok) {
         console.log("Fetched Products:", data); // Debugging log
-        // setProducts(data);
         return data;
       } else {
         handleError(new Error(data.message));
